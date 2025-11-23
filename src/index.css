@@ -1,100 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
-:root {
-  /* Premium Color Palette */
-  --color-primary: #4a0404; /* Deep Red / Burgundy */
-  --color-primary-light: #720e1e;
-  --color-secondary: #d4af37; /* Gold */
-  --color-secondary-light: #f3e5ab;
-  --color-background: #fdfbf7; /* Off-white / Cream */
-  --color-text: #2c2c2c; /* Dark Gray */
-  --color-text-light: #666666;
-  --color-white: #ffffff;
-  
-  /* Typography */
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Lato', sans-serif;
-  
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 8rem;
-}
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
-* {
-  box-sizing: border_box;
-  margin: 0;
-  padding: 0;
-}
+@layer base {
+  body {
+    @apply font-body bg-background text-text antialiased leading-relaxed;
+  }
 
-body {
-  font-family: var(--font-body);
-  background-color: var(--color-background);
-  color: var(--color-text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold leading-tight text-primary;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-primary);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.3s ease;
-}
-
-ul {
-  list-style: none;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-family: var(--font-body);
-}
-
-/* Utility Classes */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-sm);
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 32px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-primary-light);
-}
-
-.btn-outline {
-  background-color: transparent;
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.btn-outline:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  button {
+    @apply font-body cursor-pointer outline-none;
+  }
 }

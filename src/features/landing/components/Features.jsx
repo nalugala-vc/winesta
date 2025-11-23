@@ -1,5 +1,5 @@
 import React from 'react';
-import './Features.css';
+
 
 const features = [
     {
@@ -57,16 +57,16 @@ const features = [
 
 const Features = () => {
     return (
-        <section className="features-section">
-            <div className="container">
-                <div className="features-grid-new">
+        <section className="py-24 bg-white border-b border-black/5">
+            <div className="container mx-auto px-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                     {features.map((feature) => (
-                        <div key={feature.id} className="feature-item">
-                            <div className="feature-icon-wrapper">
+                        <div key={feature.id} className="p-8 transition-transform duration-300 hover:-translate-y-1 group">
+                            <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-primary bg-primary/5 rounded-full transition-all duration-300 group-hover:bg-primary group-hover:text-white [&>svg]:w-8 [&>svg]:h-8">
                                 {feature.icon}
                             </div>
-                            <h3 className="feature-title">{feature.title}</h3>
-                            <p className="feature-desc">{feature.description}</p>
+                            <h3 className="font-heading text-xl mb-3 text-text">{feature.title}</h3>
+                            <p className="text-sm text-text-light leading-relaxed font-light">{feature.description}</p>
                         </div>
                     ))}
                 </div>
