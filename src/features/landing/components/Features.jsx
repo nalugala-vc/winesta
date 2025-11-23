@@ -3,74 +3,65 @@ import React from 'react';
 
 const features = [
     {
-        id: 'cellar',
-        title: 'Personal Wine Cellar',
-        description: 'Track, rate, and showcase your wine journey.',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 3v18h18" />
-                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
-            </svg>
-        )
+        id: 1,
+        title: "Personal Wine Cellar",
+        description: "Curate your digital cellar with precision. Track your collection, manage inventory, and get notified when your wines reach their peak drinking window.",
+        image: "/assets/feature-cellar.png",
+        imagePosition: "left"
     },
     {
-        id: 'community',
-        title: 'Vibrant Community',
-        description: 'Share moments, discover recommendations.',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-        )
+        id: 2,
+        title: "Vibrant Community",
+        description: "Connect with fellow enthusiasts, share tasting notes, and discover hidden gems recommended by a global community of wine lovers.",
+        image: "/assets/feature-community.png",
+        imagePosition: "right"
     },
     {
-        id: 'events',
-        title: 'Events & Meetups',
-        description: 'Join local wine gatherings and curated tasting sessions.',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-        )
+        id: 3,
+        title: "Events & Meetups",
+        description: "Access exclusive tastings, vineyard tours, and sommelier-led workshops. Experience the world of wine beyond the bottle.",
+        image: "/assets/feature-events.png",
+        imagePosition: "left"
     },
     {
-        id: 'ai',
-        title: 'AI-Sommelier',
-        description: 'Your smart wine guide for pairings & recommendations.',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="11" width="18" height="10" rx="2" />
-                <circle cx="12" cy="5" r="2" />
-                <path d="M12 7v4" />
-                <line x1="8" y1="16" x2="8" y2="16" />
-                <line x1="16" y1="16" x2="16" y2="16" />
-            </svg>
-        )
+        id: 4,
+        title: "AI-Sommelier",
+        description: "Your personal pocket sommelier. Snap a photo of any label to get instant ratings, food pairings, and serving recommendations.",
+        image: "/assets/feature-ai.png",
+        imagePosition: "right"
     }
 ];
 
 const Features = () => {
     return (
-        <section className="py-24 bg-white border-b border-black/5">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    {features.map((feature) => (
-                        <div key={feature.id} className="p-8 transition-transform duration-300 hover:-translate-y-1 group">
-                            <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-primary bg-primary/5 rounded-full transition-all duration-300 group-hover:bg-primary group-hover:text-white [&>svg]:w-8 [&>svg]:h-8">
-                                {feature.icon}
-                            </div>
-                            <h3 className="font-heading text-xl mb-3 text-text">{feature.title}</h3>
-                            <p className="text-sm text-text-light leading-relaxed font-light">{feature.description}</p>
-                        </div>
-                    ))}
+        <section className="w-full bg-background">
+            {features.map((feature, index) => (
+                <div key={feature.id} className="flex flex-col md:flex-row w-full h-[60vh] min-h-[500px]">
+                    {/* Image Side */}
+                    <div className={`w-full md:w-1/2 h-full relative overflow-hidden group ${feature.imagePosition === 'right' ? 'md:order-2' : 'md:order-1'}`}>
+                        <img
+                            src={feature.image}
+                            alt={feature.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+
+                    {/* Text Side */}
+                    <div className={`w-full md:w-1/2 h-full flex flex-col justify-center items-center p-12 md:p-24 text-center bg-[#fdfbf7] ${feature.imagePosition === 'right' ? 'md:order-1' : 'md:order-2'}`}>
+                        <h3 className="font-heading text-4xl md:text-5xl mb-6 text-primary relative inline-block">
+                            {feature.title}
+                            <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-secondary"></span>
+                        </h3>
+                        <p className="text-lg text-text-light leading-relaxed max-w-md mt-4 font-light">
+                            {feature.description}
+                        </p>
+                        <button className="mt-10 px-8 py-3 border border-primary text-primary uppercase tracking-widest text-xs font-bold hover:bg-primary hover:text-white transition-all duration-300">
+                            Learn More
+                        </button>
+                    </div>
                 </div>
-            </div>
+            ))}
         </section>
     );
 };

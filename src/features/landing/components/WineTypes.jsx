@@ -39,7 +39,7 @@ const wineTypes = [
 ];
 
 const WineTypes = () => {
-    const [hoveredId, setHoveredId] = useState(null);
+    const [hoveredId, setHoveredId] = useState('white');
 
     return (
         <section className="p-0 bg-white overflow-hidden">

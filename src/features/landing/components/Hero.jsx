@@ -1,24 +1,55 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import TransparentImage from '../../../components/TransparentImage';
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden text-white">
-      <div className="absolute top-0 left-0 w-full h-full z-10">
-        <img src="/assets/hero-wine-premium.png" alt="Premium Wine Pouring" className="w-full h-full object-cover" />
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+    <section className="relative w-full min-h-screen bg-white flex items-center justify-center overflow-hidden pt-20">
+      {/* Background Elements */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] opacity-30 pointer-events-none blur-sm">
+        <img src="/assets/hero-grapes-blur.png" alt="" className="w-full h-auto" />
       </div>
-      <div className="relative z-20 text-center max-w-4xl px-5 animate-fade-in">
-        <h1 className="flex flex-col mb-6 drop-shadow-lg">
-          <span className="font-body text-2xl md:text-3xl font-light tracking-[3px] uppercase mb-2 block opacity-0 animate-slide-down">Uncork the World of</span>
-          <span className="font-heading text-5xl md:text-7xl leading-tight text-white opacity-0 animate-scale-in">Wine Together</span>
-        </h1>
-        <p className="text-xl md:text-2xl font-light mb-10 opacity-90 max-w-xl mx-auto opacity-0 animate-fade-in-delay">
-          Join the global community to discover, rate, and share your wine journey.
-        </p>
-        <button className="px-10 py-4 text-lg tracking-wide opacity-0 animate-fade-in-up bg-primary text-white hover:bg-primary-light transition-colors duration-300 uppercase font-semibold">
-          Start Your Journey
-        </button>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="relative flex items-center justify-center w-full h-[calc(100vh-80px)]">
+
+          {/* Left Side Text - Absolutely Positioned */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 max-w-md z-20">
+            <h1 className="font-heading text-[55px] md:text-[91px] text-primary leading-tight mb-6 text-right drop-shadow-sm">
+              Discover <br />
+              <span className="font-bold">New Wine</span>
+            </h1>
+            <p className="text-text-light text-sm md:text-base max-w-xs leading-relaxed ml-auto text-right">
+              Join us to uncover fresh wine experiences each month. Elevate your palate with handpicked selections from around the world.
+            </p>
+          </div>
+
+          {/* Center Image - Takes up most space */}
+          <div className="relative w-full max-w-[800px] z-10 px-32">
+            <TransparentImage
+              src="/assets/hero-glass.png"
+              alt="Red wine splash"
+              className="w-full h-auto object-contain drop-shadow-2xl animate-fade-in-up"
+              tolerance={20}
+            />
+          </div>
+
+          {/* Right Side Text - Absolutely Positioned */}
+          <div className="absolute right-0 top-1/2 translate-y-8 max-w-md z-20 flex flex-col items-end">
+            <h1 className="font-heading text-[55px] md:text-[91px] text-primary leading-tight mb-8 drop-shadow-sm">
+              Adventures
+            </h1>
+            <Link to="/contact" className="group flex items-center gap-4 text-primary font-bold uppercase tracking-widest text-sm hover:opacity-70 transition-opacity">
+              Contact Us
+              <span className="w-12 h-12 rounded-full border border-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </span>
+            </Link>
+          </div>
+
+        </div>
       </div>
     </section>
   );
