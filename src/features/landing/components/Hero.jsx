@@ -39,8 +39,8 @@ const Hero = () => {
             <h1 className="font-heading text-[55px] md:text-[91px] text-primary leading-tight mb-8 drop-shadow-sm">
               Adventures
             </h1>
-            <Link to="/contact" className="group flex items-center gap-4 text-primary font-bold uppercase tracking-widest text-sm hover:opacity-70 transition-opacity">
-              Contact Us
+            <Link to="/events" className="group flex items-center gap-4 text-primary font-bold uppercase tracking-widest text-sm hover:opacity-70 transition-opacity">
+              Events
               <span className="w-12 h-12 rounded-full border border-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
