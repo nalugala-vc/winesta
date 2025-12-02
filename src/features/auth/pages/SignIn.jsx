@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthLayout from '../components/AuthLayout';
 import Input from '../components/Input';
 
 const SignIn = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -22,6 +23,7 @@ const SignIn = () => {
         e.preventDefault();
         console.log('Sign in:', formData);
         // TODO: Implement sign in logic
+        navigate('/dashboard');
     };
 
     return (

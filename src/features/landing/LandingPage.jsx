@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -14,7 +15,7 @@ const AboutSection = () => (
                 Winesta is more than just a platform; it's a gathering place for those who appreciate the finer things in life.
                 Whether you are a seasoned sommelier or a curious beginner, our community is designed to elevate your wine journey.
             </p>
-            <button className="inline-block px-8 py-3 text-base font-semibold uppercase tracking-wide border border-transparent transition-all duration-300 bg-primary text-white hover:bg-primary-light mt-8">Join the Community</button>
+            <Link to="/login" className="inline-block px-8 py-3 text-base font-semibold uppercase tracking-wide border border-transparent transition-all duration-300 bg-primary text-white hover:bg-primary-light mt-8">Join the Community</Link>
         </div>
     </section>
 );

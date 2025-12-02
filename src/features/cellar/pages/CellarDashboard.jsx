@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AuthenticatedHeader from '../../../components/AuthenticatedHeader';
 import WineCard from '../components/WineCard';
 import AddWineModal from '../components/AddWineModal';
 import WineDetailsModal from '../components/WineDetailsModal';
@@ -91,133 +92,105 @@ const CellarDashboard = () => {
     };
 
     const categories = [
-        { id: 'all', label: 'All Wines', icon: '🍷' },
-        { id: 'favorite', label: 'Favorites', icon: '⭐' },
-        { id: 'tried', label: 'Tried', icon: '✓' },
-        { id: 'wishlist', label: 'Wishlist', icon: '♡' }
+        { id: 'all', label: 'All Wines' },
+        { id: 'favorite', label: 'Favorites' },
+        { id: 'tried', label: 'Tried' },
+        { id: 'wishlist', label: 'Wishlist' }
     ];
 
     return (
-        <div className="min-h-screen bg-background">
-            {/* Premium Header with Hero */}
-            <div className="relative bg-primary text-white overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                        backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
-                    }}></div>
-                </div>
-
-                <div className="container mx-auto px-4 py-12 relative z-10">
-                    {/* Navigation */}
-                    <div className="flex items-center justify-between mb-16">
-                        <Link to="/" className="font-heading text-3xl font-bold tracking-wide hover:text-secondary transition-colors">
-                            WINESTA
-                        </Link>
-                        <nav className="hidden md:flex items-center gap-8">
-                            <Link to="/" className="text-sm uppercase tracking-widest hover:text-secondary transition-colors">Home</Link>
-                            <Link to="/cellar" className="text-sm uppercase tracking-widest text-secondary">My Cellar</Link>
-                            <Link to="/login" className="text-sm uppercase tracking-widest hover:text-secondary transition-colors">Profile</Link>
-                        </nav>
-                    </div>
-
-                    {/* Hero Content */}
-                    <div className="max-w-4xl">
-                        <p className="text-secondary text-sm uppercase tracking-[0.3em] mb-4 font-semibold">Your Personal Collection</p>
-                        <h1 className="font-heading text-6xl md:text-7xl mb-6 leading-tight">
-                            Wine Cellar
-                        </h1>
-                        <p className="text-xl text-white/80 mb-8 max-w-2xl leading-relaxed">
-                            Curate your journey through the world of wine. Track, rate, and cherish every bottle.
-                        </p>
-                        <button
-                            onClick={() => {
-                                setEditingWine(null);
-                                setShowAddModal(true);
-                            }}
-                            className="group px-8 py-4 bg-secondary text-primary font-bold uppercase tracking-widest text-sm hover:bg-secondary/90 transition-all duration-300 inline-flex items-center gap-3"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                            </svg>
-                            Add to Collection
-                        </button>
-                    </div>
-
-                    {/* Stats Cards */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+        <div className="min-h-screen bg-background font-body">
+            <AuthenticatedHeader />
+            
+            <div className="pt-32 pb-16 container mx-auto px-4">
+                {/* Minimalist Hero Section */}
+                <div className="mb-20 max-w-4xl mx-auto text-center">
+                    <p className="text-secondary text-sm uppercase tracking-[0.3em] mb-4 font-bold">Your Personal Collection</p>
+                    <h1 className="font-heading text-6xl md:text-7xl text-primary mb-8 leading-tight">
+                        Wine Cellar
+                    </h1>
+                    <p className="text-xl text-text-light mb-10 max-w-2xl mx-auto leading-relaxed">
+                        Curate your journey through the world of wine. Track, rate, and cherish every bottle.
+                    </p>
+                    <button
+                        onClick={() => {
+                            setEditingWine(null);
+                            setShowAddModal(true);
+                        }}
+                        className="group px-8 py-4 bg-primary text-white font-bold uppercase tracking-widest text-sm hover:bg-primary-light transition-all duration-300 inline-flex items-center gap-3"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Add to Collection
+                    </button>
+                    
+                    {/* Stats Cards - Minimalist */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-3xl mx-auto">
                         {[
                             { label: 'Total Wines', value: counts.all, icon: '🍷' },
                             { label: 'Favorites', value: counts.favorite, icon: '⭐' },
                             { label: 'Tried', value: counts.tried, icon: '✓' },
                             { label: 'Wishlist', value: counts.wishlist, icon: '♡' }
                         ].map((stat, idx) => (
-                            <div key={idx} className="bg-white/10 backdrop-blur-sm p-6 border border-white/20">
-                                <div className="text-3xl mb-2">{stat.icon}</div>
-                                <div className="text-4xl font-heading mb-1">{stat.value}</div>
-                                <div className="text-xs uppercase tracking-widest text-white/70">{stat.label}</div>
+                            <div key={idx} className="text-center group cursor-pointer">
+                                <div className="text-4xl font-heading text-primary mb-2 group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
+                                <div className="text-xs uppercase tracking-widest text-text-light font-bold group-hover:text-secondary transition-colors">{stat.label}</div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
 
-            {/* Main Content */}
-            <div className="container mx-auto px-4 py-16">
-                {/* Category Filter */}
-                <div className="flex gap-3 mb-12 overflow-x-auto pb-2">
-                    {categories.map((cat) => (
-                        <button
-                            key={cat.id}
-                            onClick={() => setActiveCategory(cat.id)}
-                            className={`px-6 py-3 font-semibold uppercase tracking-wide text-sm whitespace-nowrap transition-all ${activeCategory === cat.id
-                                ? 'bg-primary text-white'
-                                : 'bg-white text-text border border-gray-200 hover:border-primary hover:text-primary'
-                                }`}
-                        >
-                            <span className="mr-2">{cat.icon}</span>
-                            {cat.label}
-                            {counts[cat.id] > 0 && (
-                                <span className={`ml-2 px-2 py-0.5 text-xs rounded-full ${activeCategory === cat.id ? 'bg-white/20' : 'bg-background'
-                                    }`}>
-                                    {counts[cat.id]}
-                                </span>
-                            )}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Wine Grid */}
-                {filteredWines.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filteredWines.map(wine => (
-                            <WineCard
-                                key={wine.id}
-                                wine={wine}
-                                onView={handleViewWine}
-                                onEdit={handleEditWine}
-                                onDelete={handleDeleteWine}
-                            />
+                {/* Main Content */}
+                <div className="max-w-7xl mx-auto">
+                    {/* Category Filter */}
+                    <div className="flex justify-center gap-3 mb-16 overflow-x-auto pb-2">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat.id}
+                                onClick={() => setActiveCategory(cat.id)}
+                                className={`px-6 py-3 font-semibold uppercase tracking-wide text-sm whitespace-nowrap transition-all border-b-2 ${activeCategory === cat.id
+                                    ? 'border-primary text-primary'
+                                    : 'border-transparent text-text-light hover:text-primary hover:border-primary/30'
+                                    }`}
+                            >
+                                {cat.label}
+                            </button>
                         ))}
                     </div>
-                ) : (
-                    <div className="text-center py-24 bg-white rounded-lg">
-                        <div className="text-6xl mb-6">🍷</div>
-                        <h3 className="font-heading text-3xl text-primary mb-3">No wines yet</h3>
-                        <p className="text-text-light mb-8 max-w-md mx-auto">
-                            Start your wine journey by adding your first bottle to the collection
-                        </p>
-                        <button
-                            onClick={() => {
-                                setEditingWine(null);
-                                setShowAddModal(true);
-                            }}
-                            className="px-8 py-4 bg-primary text-white font-bold uppercase tracking-widest text-sm hover:bg-primary-light transition-colors"
-                        >
-                            Add Your First Wine
-                        </button>
-                    </div>
-                )}
+
+                    {/* Wine Grid */}
+                    {filteredWines.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                            {filteredWines.map(wine => (
+                                <WineCard
+                                    key={wine.id}
+                                    wine={wine}
+                                    onView={handleViewWine}
+                                    onEdit={handleEditWine}
+                                    onDelete={handleDeleteWine}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-24 bg-white/50 rounded-lg border border-dashed border-gray-200">
+                            <div className="text-6xl mb-6 opacity-50">🍷</div>
+                            <h3 className="font-heading text-3xl text-primary mb-3">No wines yet</h3>
+                            <p className="text-text-light mb-8 max-w-md mx-auto">
+                                Start your wine journey by adding your first bottle to the collection
+                            </p>
+                            <button
+                                onClick={() => {
+                                    setEditingWine(null);
+                                    setShowAddModal(true);
+                                }}
+                                className="px-8 py-4 bg-primary text-white font-bold uppercase tracking-widest text-sm hover:bg-primary-light transition-colors"
+                            >
+                                Add Your First Wine
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
 
             {/* Modals */}

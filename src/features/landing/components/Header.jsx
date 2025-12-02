@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -28,10 +27,10 @@ const Header = () => {
         </div>
         <nav className="hidden md:block">
           <ul className="flex gap-10">
-            <li><Link to="/about" className="text-sm font-semibold uppercase tracking-wide text-text relative group hover:text-primary transition-colors">About Us<span className="absolute w-0 h-0.5 bottom-[-4px] left-0 bg-secondary transition-all duration-300 group-hover:w-full"></span></Link></li>
-            <li><Link to="/wines" className="text-sm font-semibold uppercase tracking-wide text-text relative group hover:text-primary transition-colors">Wines<span className="absolute w-0 h-0.5 bottom-[-4px] left-0 bg-secondary transition-all duration-300 group-hover:w-full"></span></Link></li>
             <li><Link to="/stories" className="text-sm font-semibold uppercase tracking-wide text-text relative group hover:text-primary transition-colors">Stories<span className="absolute w-0 h-0.5 bottom-[-4px] left-0 bg-secondary transition-all duration-300 group-hover:w-full"></span></Link></li>
             <li><Link to="/events" className="text-sm font-semibold uppercase tracking-wide text-text relative group hover:text-primary transition-colors">Events<span className="absolute w-0 h-0.5 bottom-[-4px] left-0 bg-secondary transition-all duration-300 group-hover:w-full"></span></Link></li>
+            <li><Link to="/sommelier" className="text-sm font-semibold uppercase tracking-wide text-text relative group hover:text-primary transition-colors">Sommelier<span className="absolute w-0 h-0.5 bottom-[-4px] left-0 bg-secondary transition-all duration-300 group-hover:w-full"></span></Link></li>
+            <li><Link to="/wines" className="text-sm font-semibold uppercase tracking-wide text-text relative group hover:text-primary transition-colors">Wine Club<span className="absolute w-0 h-0.5 bottom-[-4px] left-0 bg-secondary transition-all duration-300 group-hover:w-full"></span></Link></li>
           </ul>
         </nav>
         <div className="flex items-center gap-6">
