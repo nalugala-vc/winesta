@@ -7,7 +7,7 @@ const Hero = () => {
     <section className="relative w-full min-h-screen bg-white flex items-center justify-center overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] opacity-30 pointer-events-none blur-sm">
-        <img src="/assets/hero-grapes-blur.png" alt="" className="w-full h-auto" />
+        <img src="/assets/hero-grapes-gold.png" alt="" className="w-full h-auto" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -27,8 +27,8 @@ const Hero = () => {
           {/* Center Image - Takes up most space */}
           <div className="relative w-full max-w-[800px] z-10 px-32">
             <TransparentImage
-              src="/assets/hero-glass.png"
-              alt="Red wine splash"
+              src="/assets/hero-brown-removebg-preview.png"
+              alt="Brown theme wine bottle and glass"
               className="w-full h-auto object-contain drop-shadow-2xl animate-fade-in-up"
               tolerance={20}
             />
